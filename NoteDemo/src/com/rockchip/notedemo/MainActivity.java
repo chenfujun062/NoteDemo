@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.RemoteException;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -61,7 +62,8 @@ public class MainActivity extends Activity {
     private Spinner mPenColorSp;
     private CheckBox mStrokesCheck;
     private CheckBox mEraserCheck;
-
+    private Button mfullframeBtn;
+    private Button mfreshmodeBtn;
     private NoteJNI mNativeJNI;
 
     private static int mScreenH;
@@ -85,6 +87,31 @@ public class MainActivity extends Activity {
     private boolean mLastConnectStatus = true;
     private boolean mConnectStatus = false;
     private boolean initFlag = false;
+    private static int num =1;
+
+    public static final String EPD_NULL ="-1";
+    public static final String EPD_AUTO ="0";
+    public static final String EPD_OVERLAY ="1";
+    public static final String EPD_FULL_GC16 ="2";
+    public static final String EPD_FULL_GL16 ="3";
+    public static final String EPD_FULL_GLR16 ="4";
+    public static final String EPD_FULL_GLD16 ="5";
+    public static final String EPD_FULL_GCC16 ="6";
+    public static final String EPD_PART_GC16 ="7";
+    public static final String EPD_PART_GL16 ="8";
+    public static final String EPD_PART_GLR16 ="9";
+    public static final String EPD_PART_GLD16 ="10";
+    public static final String EPD_PART_GCC16 ="11";
+    public static final String EPD_A2 ="12";
+    public static final String EPD_A2_DITHER ="13";
+    public static final String EPD_DU ="14";
+    public static final String EPD_DU4 ="15";
+    public static final String EPD_A2_ENTER ="16";
+    public static final String EPD_RESET ="17";
+    public static final String EPD_AUTO_DU ="22";
+    public static final String EPD_AUTO_DU4 ="23";
+
+
 
     private Handler handler=new Handler() {
         @Override
@@ -325,6 +352,40 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
+        mfullframeBtn = (Button) findViewById(R.id.fullframe);
+        mfullframeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG,"sendOneFullFrame");
+                num = ++num;
+                if(num > Integer.MAX_VALUE-100){
+                    num =1;
+                }
+                String numStr = num +"";
+                Log.d( TAG,"sendOneFullFrame numStr"+numStr);
+                setProperty("sys.eink.one_full_mode_timeline",numStr);
+                view.postInvalidate();
+
+            }
+        });
+
+        mfreshmodeBtn = (Button) findViewById(R.id.freshmode);
+        mfreshmodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG,"freshmode");
+
+                Log.d( TAG,"freshmode"+EPD_A2_DITHER);
+                setProperty("sys.eink.mode",EPD_A2_DITHER);
+                view.postInvalidate();
+
+            }
+        });
+
+
+
+
 
         mStrokesCheck = (CheckBox) findViewById(R.id.strokes);
         mStrokesCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

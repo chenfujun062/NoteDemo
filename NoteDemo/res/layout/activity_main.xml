@@ -109,6 +109,25 @@
             android:background="@drawable/btn_select"
             android:text="退出" />
 
+        <Button
+            android:id="@+id/fullframe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_select"
+            android:text="全刷新" />
+
+        <Button
+            android:id="@+id/freshmode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_select"
+            android:text="刷新模式"/>
+
+
+
+
     </LinearLayout>
 
     <TextView
