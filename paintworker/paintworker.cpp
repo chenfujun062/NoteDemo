@@ -691,7 +691,7 @@ void PaintWorker::Move(int x, int y)
         }
         pen_width = penWidth;
     } else {
-        pen_width = PEN_WIDTH;
+        //pen_width = pen_width;//PEN_WIDTH;
     }
     commitWorker.setPenWidth(pen_width);
     mPaint.setStrokeWidth(pen_width);

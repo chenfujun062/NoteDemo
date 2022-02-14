@@ -65,6 +65,7 @@ public class MainActivity extends Activity {
     private Button mfullframeBtn;
     private Button mfreshmodeBtn;
     private NoteJNI mNativeJNI;
+    private Button mpentypeBtn;
 
     private static int mScreenH;
     private static int mScreenW;
@@ -88,7 +89,7 @@ public class MainActivity extends Activity {
     private boolean mConnectStatus = false;
     private boolean initFlag = false;
     private static int num =1;
-
+    private static int type =0;
     public static final String EPD_NULL ="-1";
     public static final String EPD_AUTO ="0";
     public static final String EPD_OVERLAY ="1";
@@ -382,6 +383,50 @@ public class MainActivity extends Activity {
 
             }
         });
+
+
+
+        mpentypeBtn = (Button) findViewById(R.id.pentype);
+        mpentypeBtn.setOnClickListener(new View.OnClickListener() {
+          @Override
+        public void onClick(View view) {
+        
+              type = ++type;
+              if(type==3)
+                type=0;
+
+         Log.d( TAG,"pen type "+type);
+        switch (type) {
+            case 0:
+                 //NoteView.isStrokesEnable = false;
+                 mNativeJNI.native_clear(0);
+                 mNativeJNI.native_strokes(false);
+                 mNativeJNI.native_set_pen_width(4);
+                 mView.setPenColor(PointStruct.PEN_BLACK_COLOR);
+                 mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);
+                break;
+            case 1:
+                //NoteView.isStrokesEnable = false;
+                mNativeJNI.native_clear(0);
+                mNativeJNI.native_strokes(true);
+
+                mView.setPenColor(PointStruct.PEN_BLACK_COLOR);
+                mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);
+                break;
+            case 2:
+                //NoteView.isStrokesEnable = true;
+                mNativeJNI.native_clear(0);
+                mNativeJNI.native_strokes(false);
+                mNativeJNI.native_set_pen_width(50);
+
+                mView.setPenColor(PointStruct.PEN_BLUE_COLOR);
+                mNativeJNI.native_set_pen_color_any(true, PointStruct.PEN_BLUE_COLOR,0x30,0x30,0x30,0x30);
+                break;
+            }
+           } 
+        });
+
+
 
 
 
