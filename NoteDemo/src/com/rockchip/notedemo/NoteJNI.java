@@ -44,7 +44,7 @@ public class NoteJNI {
     public native int native_draw_bitmap(Bitmap bitmap, int deviceId, int left, int top, int right, int bottom);
     public native int native_sethandwriterects(Rect filterRect);
     public native int native_setnohandwriterects(Rect rect);
-
+    public native int native_set_pen_color_any(boolean isInitColor, int penColor,int A,int R,int G,int B);
     public NoteJNI(Context context) {
         Log.d(TAG, "NoteJNI");
         mContext = context;

@@ -91,7 +91,7 @@ public:
     void Out(int x, int y);
     void sethandwriterects(int x1, int y1, int x2, int y2);
     void setnohandwriterects(int x1, int y1, int x2, int y2);
-
+    void SetPenColorAny(bool isInitColor, int color,int A,int R,int G,int B);
 protected:
     void Routine() override;
 

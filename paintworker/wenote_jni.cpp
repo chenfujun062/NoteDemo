@@ -405,6 +405,14 @@ JNIEXPORT jint JNICALL native_set_pen_color(JNIEnv * env, jobject thiz, jboolean
     return JNI_OK;
 }
 
+JNIEXPORT jint JNICALL native_set_pen_color_any(JNIEnv * env, jobject thiz, jboolean isInitColor, jint penColor,jint A,jint R,jint G,int B)
+{
+    LOGD("Flash test : +++++++++++++ native_set_pen_color()");
+    paintWorker->SetPenColorAny(isInitColor, penColor,A,R,G,B);
+    return JNI_OK;
+}
+
+
 JNIEXPORT jint JNICALL native_draw_bitmap(JNIEnv * env, jobject thiz,
     jobject bitmap, jint deviceId, jint left, jint top, jint right, jint bottom)
 {
@@ -531,6 +539,8 @@ static JNINativeMethod gMethods[] = {
     { "native_draw_bitmap",      "(Landroid/graphics/Bitmap;IIIII)I",  (void*) native_draw_bitmap },
     { "native_sethandwriterects",    "(Landroid/graphics/Rect;)I",   (void*) native_sethandwriterects },
     { "native_setnohandwriterects",    "(Landroid/graphics/Rect;)I",   (void*) native_setnohandwriterects },
+    { "native_set_pen_color_any",    "(ZIIII)I",   (void*) native_set_pen_color_any },
+    
 };
 
 /*

@@ -143,7 +143,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "Flash test : +++++++ onCreate()");Log.d(TAG, "Flash test : +++++++ onCreate()");
+        Log.d(TAG, "Flash test : +++++++ onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext = MainActivity.this;
@@ -331,13 +331,10 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    Log.d(TAG, "isChecked =true onCheckedChanged");
-
                     NoteView.isStrokesEnable = true;
                     mNativeJNI.native_clear(0);
                     mNativeJNI.native_strokes(true);
                 } else {
-                    Log.d(TAG, "isChecked =false onCheckedChanged");
                     NoteView.isStrokesEnable = false;
                     mNativeJNI.native_clear(0);
                     mNativeJNI.native_strokes(false);
@@ -394,8 +391,8 @@ public class MainActivity extends Activity {
                     case 0:
                         if(initFlag) {
                             mNativeJNI.native_clear(0);
-                            mView.setPenColor(PointStruct.PEN_RED_COLOR);
-                            mNativeJNI.native_set_pen_color(true, PointStruct.PEN_RED_COLOR);
+                            mView.setPenColor(PointStruct.PEN_BLACK_COLOR);
+                            mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);
                         }
                         break;
                     case 1:
@@ -415,9 +412,21 @@ public class MainActivity extends Activity {
                         break;
                     case 4:
                         mNativeJNI.native_clear(0);
-                        mView.setPenColor(PointStruct.PEN_RED_COLOR);
-                        mNativeJNI.native_set_pen_color(true, PointStruct.PEN_RED_COLOR);
+                        mView.setPenColor(PointStruct.PEN_WHITE_COLOR);
+                        mNativeJNI.native_set_pen_color(true, PointStruct.PEN_WHITE_COLOR);
                         break;
+
+                    case 5://set any A R G B
+
+                        mNativeJNI.native_clear(0);
+                        mView.setPenColor(PointStruct.PEN_BLUE_COLOR);
+                        mNativeJNI.native_set_pen_color_any(true, PointStruct.PEN_BLUE_COLOR,0x30,0x30,0x30,0x30);
+                        break;
+
+
+
+
+
                 }
             }
 
