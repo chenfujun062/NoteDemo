@@ -507,11 +507,11 @@ void PaintWorker::SetPenColor(bool isInitColor, int color)
 void PaintWorker::SetPenColorAny(bool isInitColor, int color,int A,int R,int G,int B)
 {
     //ALOGD("---isInitColor=%d,color=%d \n", isInitColor, color);
-    if(isInitColor)
-        this->pen_color = color;
+    //if(isInitColor)
+    //    this->pen_color = color;
 
         mPaint.setARGB(A, R, G, B);
-        commitWorker.setPenColor(PEN_BLUE_COLOR);
+        commitWorker.setPenColor(color);
     
 }
 
