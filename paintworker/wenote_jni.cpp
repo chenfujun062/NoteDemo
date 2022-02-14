@@ -539,7 +539,7 @@ static JNINativeMethod gMethods[] = {
     { "native_draw_bitmap",      "(Landroid/graphics/Bitmap;IIIII)I",  (void*) native_draw_bitmap },
     { "native_sethandwriterects",    "(Landroid/graphics/Rect;)I",   (void*) native_sethandwriterects },
     { "native_setnohandwriterects",    "(Landroid/graphics/Rect;)I",   (void*) native_setnohandwriterects },
-    { "native_set_pen_color_any",    "(ZIIII)I",   (void*) native_set_pen_color_any },
+    { "native_set_pen_color_any",    "(ZIIIII)I",   (void*) native_set_pen_color_any },
     
 };
 
