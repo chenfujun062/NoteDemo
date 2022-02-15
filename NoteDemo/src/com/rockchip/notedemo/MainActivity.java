@@ -453,13 +453,14 @@ public class MainActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    mNativeJNI.native_is_handwriting_enable(false);
-                    mNativeJNI.native_clear(0);
+                    //mNativeJNI.native_is_handwriting_enable(false);
+                    //mNativeJNI.native_clear(0);
                     NoteView.isEraserEnable = true;
-                    /*mNativeJNI.native_clear(0);
+                    //mNativeJNI.native_clear(0);
                     mView.setPenColor(PointStruct.PEN_WHITE_COLOR);
-                    mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);*/
-                    //mNativeJNI.native_eraser(true);
+                    mNativeJNI.native_set_pen_color(true, PointStruct.PEN_WHITE_COLOR);
+                    mNativeJNI.native_eraser(true);
+                    mNativeJNI.native_set_pen_width(20);
                     //mView.postInvalidate();
                     /*try {
                         sleep(800);
@@ -472,10 +473,11 @@ public class MainActivity extends Activity {
                     mNativeJNI.native_clear(0);
                     NoteView.isEraserEnable = false;
                     mNativeJNI.native_is_handwriting_enable(true);
-                    /*mNativeJNI.native_clear(0);
+                    mNativeJNI.native_clear(0);
                     mView.setPenColor(PointStruct.PEN_BLACK_COLOR);
-                    mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);*/
-                    //mNativeJNI.native_eraser(false);
+                    mNativeJNI.native_set_pen_color(true, PointStruct.PEN_BLACK_COLOR);
+                    mNativeJNI.native_eraser(false);
+                    mNativeJNI.native_set_pen_width(4); //
                     //mView.postInvalidate();
                     /*try {
                         sleep(800);
